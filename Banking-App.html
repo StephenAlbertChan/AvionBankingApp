@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking App</title>
+    <link rel="stylesheet" href="Banking-App.css">
+</head>
+<body>
+
+    <div class="header" id="header">
+        <h1>ESTIPEN'S BANK</h1>
+    </div>
+    <div class="container-all">
+        <div class="login-signup-container" id="loginSignupContainer">
+            
+            <div class="login-info" id="loginPage">
+                <h2>User Login</h2>
+                <span>Username: </span>
+                <input type="text" class="user-name" id="username">
+                <div id="errorusername"></div>
+                <br>
+                <span>Password: </span>
+                <input type="text" class="password" id="password">
+                <div id="errorpassword"></div>
+                <br>
+                <div class="button-container">
+                    <button class="button" id="loginButton">LOGIN</button>
+                    <button class="button" id="registerButton">REGISTER HERE!</button>
+                </div>
+            </div>
+
+            
+            <div class="signup-info hide" id="signupPage">
+                <h2>Registration</h2>
+                <span>Username: </span>
+                <input type="text" class="user-create" id="userCreate">
+                <div id="erroruserCreate"></div>
+                <br>
+                <span>Password: </span>
+                <input type="text" class="password-create" id="passwordCreate">
+                <div id="errorpasswordCreate"></div>
+                <br>
+                <span>Confirm Password: </span>
+                <input type="text" class="password-confirm" id="passwordConfirm">
+                <div id="errorpasswordConfirm"></div>
+                <br>
+                <div class="button-container">
+                    <button class="button" id="signupButton">SIGNUP</button>
+                    <button class="button" id="loginPageButton">Already a user?</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="display-info-container hidden" id="displayInfoContainer">
+
+            <div class="user-info-display">
+                <span class="user-display">Logged in as: </span>
+                <span class="user-display" id="userDisplay"> </span>
+                <br>
+                <span class="money-display">Money: </span>
+                <span class="money-display" id="moneyDisplay"> </span>
+                <br>
+                <button class="button" id="logoutButton">LOGOUT</button>
+            </div>
+                
+            <div class="deposit-info-display">
+                <span class="deposit-money">Deposit Amount:</span>
+                <input class="deposit-amount" id="depositAmount">
+                <br>
+                <button class="button" id="depositButton">DEPOSIT</button>
+            </div>
+                
+            <div class="withdraw-info-display">
+                <span class="withdraw-money">Withdraw Amount:</span>
+                <input class="withdraw-amount" id="withdrawAmount">
+                <br>
+                <button class="button" id="withdrawButton">WITHDRAW</button>
+            </div>
+
+            <div class="send-info-display">
+                <span class="send-money">Send Money:</span>
+                <input class="send-Amount" id="sendAmount">
+                <br>
+                <span class="send-to">Recipient:</span>
+                <input class="send-name" id="sendName">
+                <br>
+                <button class="button" id="sendButton">SEND</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <h2 type="text" class="title">List of Users: </h2>
+    <div class="user-list-container" id="userList">
+        
+        <!-- <div class="user-list">
+            <span type="text" class="new-user" id="newUser">Username: test1</span>
+            <span type="text" class="new-password" id="newPassword">Username: 123</span>
+            <span type="text" class="new-money" id="newMoney">Money: 0</span>
+        </div>
+        <div class="user-list">
+            <span type="text" class="new-user" id="newUser">Username: test1</span>
+            <span type="text" class="new-password" id="newPassword">Username: 123</span>
+            <span type="text" class="new-money" id="newMoney">Money: 0</span>
+        </div>
+        <div class="user-list">
+            <span type="text" class="new-user" id="newUser">Username: test1</span>
+            <span type="text" class="new-password" id="newPassword">Username: 123</span>
+            <span type="text" class="new-money" id="newMoney">Money: 0</span>
+        </div>   -->
+        
+    </div>
+
+</body>
+
+<script src = "Banking-App.js"></script>
+
+</html>
