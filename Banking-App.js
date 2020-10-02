@@ -68,6 +68,7 @@ registerButton.onclick = function() {
     status.className += ' hide';
     status = document.getElementById('signupPage');
     status.className = 'signup-info';
+    imageRandomizer();
     
 }
 
@@ -162,24 +163,29 @@ function getMoney(i,username,users) {
     //displaying created users
 function addUser(users,i,userList) {
     
+    let newImage = document.createElement("img");    
     let newList = document.createElement("div");
     let newUser = document.createElement("span");
     let newMoney = document.createElement("span");
     let newPassword = document.createElement("span");
 
+
     newList.className = "user-list";
+    newImage.className = "image";
     newUser.className = "new-user";
     newMoney.className = "new-money";
     newPassword.className = "new-password";
 
     newMoney.id = "newMoney"+[i];
-    // newUser.id = "newUser"+[i];
 
     userList.appendChild(newList);
+    newList.appendChild(newImage);
     newList.appendChild(newUser);
     newList.appendChild(newPassword);
     newList.appendChild(newMoney);
     
+    let randomImage = 'image'+imageRandomizer()+'.png';
+    newImage.src= randomImage;
     newUser.innerHTML = "Username: " + users[i].username;
     newPassword.innerHTML = "Password: " + users[i].password;
     newMoney.innerHTML = "Money: " + users[i].money;
@@ -210,6 +216,11 @@ function clearInput() {
     //for sending money
     sendAmount.value = '';
     sendName.value = '';
+}
+
+function imageRandomizer() {
+    let rng = Math.floor(Math.random() * (5 - 1) + 1);
+    return rng;
 }
 
 // == User functions ends here =====================================================================
