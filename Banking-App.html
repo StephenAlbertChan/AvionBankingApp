@@ -18,11 +18,11 @@
                 <h2>User Login</h2>
                 <span>Username: </span>
                 <input type="text" class="user-name" id="username">
-                <div id="errorusername"></div>
+                <div class="error" id="errorusername"></div>
                 <br>
                 <span>Password: </span>
                 <input type="text" class="password" id="password">
-                <div id="errorpassword"></div>
+                <div class="error" id="errorpassword"></div>
                 <br>
                 <div class="button-container">
                     <button class="button" id="loginButton">LOGIN</button>
@@ -35,15 +35,16 @@
                 <h2>Registration</h2>
                 <span>Username: </span>
                 <input type="text" class="user-create" id="userCreate">
-                <div id="erroruserCreate"></div>
+                <div class="error" id="erroruserCreate"></div>
+                <div class="error" id="erroruserCreateExists"></div>
                 <br>
                 <span>Password: </span>
                 <input type="text" class="password-create" id="passwordCreate">
-                <div id="errorpasswordCreate"></div>
+                <div class="error" id="errorpasswordCreate"></div>
                 <br>
                 <span>Confirm Password: </span>
                 <input type="text" class="password-confirm" id="passwordConfirm">
-                <div id="errorpasswordConfirm"></div>
+                <div class="error" id="errorpasswordConfirm"></div>
                 <br>
                 <div class="button-container">
                     <button class="button" id="signupButton">SIGNUP</button>
@@ -66,24 +67,27 @@
                 
             <div class="deposit-info-display">
                 <span class="deposit-money">Deposit Amount:</span>
-                <input class="deposit-amount" id="depositAmount">
+                <input type="number" min="0" max="100000" class="deposit-amount" id="depositAmount">
                 <br>
                 <button class="button" id="depositButton">DEPOSIT</button>
             </div>
                 
             <div class="withdraw-info-display">
                 <span class="withdraw-money">Withdraw Amount:</span>
-                <input class="withdraw-amount" id="withdrawAmount">
+                <input type="number" class="withdraw-amount" id="withdrawAmount">
+                <div class="error" id="errorwithdrawAmount"></div>
                 <br>
                 <button class="button" id="withdrawButton">WITHDRAW</button>
             </div>
 
             <div class="send-info-display">
                 <span class="send-money">Send Money:</span>
-                <input class="send-Amount" id="sendAmount">
+                <input type="number" class="send-Amount" id="sendAmount">
+                <div class="error" id="errorsendAmount"></div>
                 <br>
                 <span class="send-to">Recipient:</span>
                 <input class="send-name" id="sendName">
+                <div class="error" id="errorsendName"></div>
                 <br>
                 <button class="button" id="sendButton">SEND</button>
             </div>
@@ -98,17 +102,7 @@
             <span type="text" class="new-user" id="newUser">Username: test1</span>
             <span type="text" class="new-password" id="newPassword">Username: 123</span>
             <span type="text" class="new-money" id="newMoney">Money: 0</span>
-        </div>
-        <div class="user-list">
-            <span type="text" class="new-user" id="newUser">Username: test1</span>
-            <span type="text" class="new-password" id="newPassword">Username: 123</span>
-            <span type="text" class="new-money" id="newMoney">Money: 0</span>
-        </div>
-        <div class="user-list">
-            <span type="text" class="new-user" id="newUser">Username: test1</span>
-            <span type="text" class="new-password" id="newPassword">Username: 123</span>
-            <span type="text" class="new-money" id="newMoney">Money: 0</span>
-        </div>   -->
+        </div>  -->
         
     </div>
 
