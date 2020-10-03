@@ -83,20 +83,30 @@ loginPageButton.onclick = function() {
 
 depositButton.onclick = function() {
     
-    c=getUser(i,c,users);
-    users[c].money += parseFloat(depositAmount.value);
-    moneyDisplay.textContent = users[c].money;
-    updateMoney(c,users);
+    if (depositAmount.value !== 'e' && depositAmount.value !== 'E'){
+        c=getUser(i,c,users);
+        users[c].money += parseFloat(depositAmount.value);
+        moneyDisplay.textContent = users[c].money;
+        updateMoney(c,users);
+        document.getElementById('error'+depositAmount.id).innerHTML = "";
+    } else {
+        document.getElementById('error'+depositAmount.id).innerHTML = "Invalid input!";
+    }
     clearInput();
 }
 
 withdrawButton.onclick = function() {
     
-    c=getUser(i,c,users);
-    if(enoughMoney(users,c,withdrawAmount)){
-        users[c].money -= parseFloat(withdrawAmount.value);
-        moneyDisplay.textContent = users[c].money;
-        updateMoney(c,users);
+    if (withdrawAmount.value !=='e' && withdrawAmount.value !=='E'){
+        c=getUser(i,c,users);
+        if(enoughMoney(users,c,withdrawAmount)){
+            users[c].money -= parseFloat(withdrawAmount.value);
+            moneyDisplay.textContent = users[c].money;
+            updateMoney(c,users);
+            document.getElementById('error'+depositAmount.id).innerHTML = "";
+        }
+    } else {
+        document.getElementById('error'+depositAmount.id).innerHTML = "Invalid input!";
     }
     clearInput();
 }
@@ -104,19 +114,23 @@ withdrawButton.onclick = function() {
 sendButton.onclick = function() {
     let sendTo = 0;   
 
-    c=getUser(i,c,users);
-    if(enoughMoney(users,c,sendAmount)){
-        for(sendTo=0;sendTo<i;sendTo++){
-            if(sendName.value === users[sendTo].username){
-                users[c].money -= parseFloat(sendAmount.value);
-                updateMoney(c,users);
-                users[sendTo].money += parseFloat(sendAmount.value);
-                updateMoney(sendTo,users);
-                document.getElementById('errorsendName').innerHTML = "";
-            }  
+    if (sendAmount.value !== 'e' && sendAmount.value !== 'E'){
+        c=getUser(i,c,users);
+        if(enoughMoney(users,c,sendAmount)){
+            for(sendTo=0;sendTo<i;sendTo++){
+                if(sendName.value === users[sendTo].username){
+                    users[c].money -= parseFloat(sendAmount.value);
+                    updateMoney(c,users);
+                    users[sendTo].money += parseFloat(sendAmount.value);
+                    updateMoney(sendTo,users);
+                    document.getElementById('error'+sendAmount.id).innerHTML = "";
+                }  
+            }
+            document.getElementById('error'+sendAmount.id).innerHTML = "User does not exists.";
+            moneyDisplay.textContent = users[c].money;
         }
-        document.getElementById('errorsendName').innerHTML = "User does not exists.";
-        moneyDisplay.textContent = users[c].money;
+    } else {
+        document.getElementById('error'+sendAmount.id).innerHTML = "Invalid input!";
     }
     clearInput();
 }
@@ -143,12 +157,14 @@ function userExists(i,username,password,users) {
                 document.getElementById('error'+password.id).innerHTML = "";
                 return 1;
             } else {
-                document.getElementById('error'+password.id).innerHTML = "Username/password is incorrect.";
+                document.getElementById('error'+password.id).innerHTML = "Password is incorrect.";
+                document.getElementById('error'+username.id).innerHTML = "";
                 return 0;
             }
         }
     }
-    document.getElementById('error'+password.id).innerHTML = "Username/password is incorrect.";
+    document.getElementById('error'+username.id).innerHTML = "User does not exist.";
+    document.getElementById('error'+password.id).innerHTML = "";
     return 0;
 }
     //getting money value of confirmed user logging in
