@@ -83,30 +83,22 @@ loginPageButton.onclick = function() {
 
 depositButton.onclick = function() {
     
-    if (depositAmount.value !== 'e' && depositAmount.value !== 'E'){
-        c=getUser(i,c,users);
-        users[c].money += parseFloat(depositAmount.value);
-        moneyDisplay.textContent = users[c].money;
-        updateMoney(c,users);
-        document.getElementById('error'+depositAmount.id).innerHTML = "";
-    } else {
-        document.getElementById('error'+depositAmount.id).innerHTML = "Invalid input!";
-    }
+    c=getUser(i,c,users);
+    users[c].money += parseFloat(depositAmount.value);
+    moneyDisplay.textContent = users[c].money;
+    updateMoney(c,users);
+    document.getElementById('error'+depositAmount.id).innerHTML = "";
     clearInput();
 }
 
 withdrawButton.onclick = function() {
     
-    if (withdrawAmount.value !=='e' && withdrawAmount.value !=='E'){
-        c=getUser(i,c,users);
-        if(enoughMoney(users,c,withdrawAmount)){
-            users[c].money -= parseFloat(withdrawAmount.value);
-            moneyDisplay.textContent = users[c].money;
-            updateMoney(c,users);
-            document.getElementById('error'+depositAmount.id).innerHTML = "";
-        }
-    } else {
-        document.getElementById('error'+depositAmount.id).innerHTML = "Invalid input!";
+    c=getUser(i,c,users);
+    if(enoughMoney(users,c,withdrawAmount)){
+        users[c].money -= parseFloat(withdrawAmount.value);
+        moneyDisplay.textContent = users[c].money;
+        updateMoney(c,users);
+        document.getElementById('error'+depositAmount.id).innerHTML = "";
     }
     clearInput();
 }
@@ -114,23 +106,20 @@ withdrawButton.onclick = function() {
 sendButton.onclick = function() {
     let sendTo = 0;   
 
-    if (sendAmount.value !== 'e' && sendAmount.value !== 'E'){
-        c=getUser(i,c,users);
-        if(enoughMoney(users,c,sendAmount)){
-            for(sendTo=0;sendTo<i;sendTo++){
-                if(sendName.value === users[sendTo].username){
-                    users[c].money -= parseFloat(sendAmount.value);
-                    updateMoney(c,users);
-                    users[sendTo].money += parseFloat(sendAmount.value);
-                    updateMoney(sendTo,users);
-                    document.getElementById('error'+sendAmount.id).innerHTML = "";
-                }  
+    c=getUser(i,c,users);
+    if(enoughMoney(users,c,sendAmount)){
+        for(sendTo=0;sendTo<i;sendTo++){
+            if(sendName.value === users[sendTo].username){
+                users[c].money -= parseFloat(sendAmount.value);
+                updateMoney(c,users);
+                users[sendTo].money += parseFloat(sendAmount.value);
+                updateMoney(sendTo,users);
+                document.getElementById('error'+sendName.id).innerHTML = "";
+            } else {
+                document.getElementById('error'+sendName.id).innerHTML = "User does not exists.";
             }
-            document.getElementById('error'+sendAmount.id).innerHTML = "User does not exists.";
-            moneyDisplay.textContent = users[c].money;
         }
-    } else {
-        document.getElementById('error'+sendAmount.id).innerHTML = "Invalid input!";
+        moneyDisplay.textContent = users[c].money;
     }
     clearInput();
 }
@@ -208,6 +197,7 @@ function addUser(users,i,userList) {
 }
     //updating money for displayed users
 function updateMoney(c,users) {
+
     let id = 'newMoney'+[c];
     let updateUserMoney = document.getElementById(id);
     updateUserMoney.textContent = 'Money: ' + users[c].money;
@@ -233,7 +223,7 @@ function clearInput() {
     sendAmount.value = '';
     sendName.value = '';
 }
-
+    //image randomizer
 function imageRandomizer() {
     let rng = Math.floor(Math.random() * (5 - 1) + 1);
     return rng;
@@ -283,7 +273,7 @@ function passwordMatch(passwordCreate,passwordConfirm){
     document.getElementById('errorpasswordConfirm').innerHTML = "";
     return 1;
 }
-
+    //not enough money in bank
 function enoughMoney(users,c,money){
 
     if (users[c].money < money.value){
